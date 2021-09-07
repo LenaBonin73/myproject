@@ -1,0 +1,34 @@
+---
+title: "first-analysis"
+author: "LenaBonin73"
+date: "2021-09-07"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+```{r}
+library(readr)
+library(tidyverse)
+
+mutations <- read_rds("data/mutations_snpeff_annotated_tidy_300K_downsampled.rds")
+metadata <- read_rds("C:/Users/lenab/Documents/AU/PIB/Ressources/sars-cov2-gisaid-master/data/2021-06-18/metadata_snpeff_tidy_300K_downsampled.rds")
+
+proteins <- read_rds("data/proteins_sarscov2_genome_positions.rds")
+mut_counts <- read.csv("data/MutCounts_with_covariates.csv")
+```
+
+Is patient status usable?
+```{r}
+df <- metadata %>% 
+  filter(!(is.na(`Patient status`)))
+df
+```
+Not really since we only have 2935 and among them some status are set to "unknown".
+
+```{r}
+
+```
+
